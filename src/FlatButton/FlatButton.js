@@ -71,6 +71,8 @@ var FlatButton = function (_Component) {
     }, _this.handleKeyboardFocus = function (event, isKeyboardFocused) {
       _this.setState({ isKeyboardFocused: isKeyboardFocused });
       _this.props.onKeyboardFocus(event, isKeyboardFocused);
+    }, _this.handleOnClick = function(event){
+        _this.props.onClick(event);
     }, _this.handleMouseEnter = function (event) {
       // Cancel hover styles for touch devices
       if (!_this.state.touch) _this.setState({ hovered: true });
@@ -204,6 +206,7 @@ var FlatButton = function (_Component) {
           focusRippleColor: buttonRippleColor,
           focusRippleOpacity: 0.3,
           onKeyboardFocus: this.handleKeyboardFocus,
+          onClick: this.handleOnClick,
           onMouseLeave: this.handleMouseLeave,
           onMouseEnter: this.handleMouseEnter,
           onTouchStart: this.handleTouchStart,
@@ -270,6 +273,8 @@ FlatButton.propTypes = {
    * @param {boolean} isKeyboardFocused Indicates whether the element is focused.
    */
   onKeyboardFocus: _react.PropTypes.func,
+  /** handle onClick event */
+  onClick: _react.PropTypes.func,
   /** @ignore */
   onMouseEnter: _react.PropTypes.func,
   /** @ignore */
@@ -300,6 +305,7 @@ FlatButton.defaultProps = {
   labelStyle: {},
   labelPosition: 'after',
   onKeyboardFocus: function onKeyboardFocus() {},
+  onClick: function onClick() {}, 
   onMouseEnter: function onMouseEnter() {},
   onMouseLeave: function onMouseLeave() {},
   onTouchStart: function onTouchStart() {},

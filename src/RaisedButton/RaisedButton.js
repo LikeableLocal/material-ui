@@ -173,6 +173,10 @@ var RaisedButton = function (_Component) {
       if (_this.props.onMouseDown) {
         _this.props.onMouseDown(event);
       }
+    }, _this.handleClick = function(event){
+      if(_this.props.onClick){
+        _this.props.onClick(event);
+      }
     }, _this.handleMouseUp = function (event) {
       _this.setState({
         zDepth: _this.state.initialZDepth
@@ -276,6 +280,7 @@ var RaisedButton = function (_Component) {
       var mergedRippleStyles = (0, _simpleAssign2.default)({}, styles.ripple, rippleStyle);
 
       var buttonEventHandlers = disabled ? {} : {
+        onClick: this.handleClick,
         onMouseDown: this.handleMouseDown,
         onMouseUp: this.handleMouseUp,
         onMouseLeave: this.handleMouseLeave,
@@ -406,6 +411,8 @@ RaisedButton.propTypes = {
   labelStyle: _react.PropTypes.object,
   /** @ignore */
   onMouseDown: _react.PropTypes.func,
+  /** handle button clicks */
+  onClick: _react.PropTypes.func,
   /** @ignore */
   onMouseEnter: _react.PropTypes.func,
   /** @ignore */
